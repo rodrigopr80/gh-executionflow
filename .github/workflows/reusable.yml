@@ -1,0 +1,35 @@
+name: Reusable Deploy
+on:
+  workflow_call:
+    inputs:
+      deploy-environment:
+        required: true
+        type: string
+      deploy-token:
+        required: true
+        type: string
+    secrets:
+      DEPLOY_TOKEN:
+        required: true
+jobs:
+    deploy:
+        runs-on: ubuntu-latest
+        steps:
+          - name: Output information
+            run: echo "Deploying & uploading"
+
+
+
+
+        #   - name: Get build artifacts
+        #     uses: actions/download-artifact@v4
+        #     with:
+        #       name: dist-files
+        #   - name: Output contents
+        #     run: ls
+        #   - name: Deploy
+        #     run: |
+        #       echo "Deploying to ${{ inputs.deploy-environment }}"
+        #       # Use the deploy token to authenticate and deploy the application
+        #       # Example command (replace with your actual deployment command):
+        #       # deploy-command --token ${{ secrets.DEPLOY_TOKEN }} --env ${{ inputs.deploy-environment }}
